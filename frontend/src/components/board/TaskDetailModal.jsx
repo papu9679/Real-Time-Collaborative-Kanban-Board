@@ -221,7 +221,7 @@ export const TaskDetailModal = ({ task, onClose, members = [] }) => {
 
           {/* Due Date */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 items-center gap-1.5">
               <Calendar className="w-3.5 h-3.5 text-slate-400" /> Due Date
             </label>
             <input
@@ -234,7 +234,7 @@ export const TaskDetailModal = ({ task, onClose, members = [] }) => {
 
           {/* Assignees */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 items-center gap-1.5">
               <UserCheck className="w-3.5 h-3.5 text-slate-400" /> Assignees
             </label>
             <div className="flex flex-wrap gap-2 pt-1">
@@ -261,7 +261,7 @@ export const TaskDetailModal = ({ task, onClose, members = [] }) => {
 
           {/* Labels / Tags */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 items-center gap-1.5">
               <Tag className="w-3.5 h-3.5 text-slate-400" /> Labels
             </label>
             <div className="flex flex-wrap gap-1.5 mb-2">
@@ -292,7 +292,7 @@ export const TaskDetailModal = ({ task, onClose, members = [] }) => {
 
           {/* Description */}
           <div>
-            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+            <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1.5 items-center gap-1.5">
               <FileText className="w-3.5 h-3.5 text-slate-400" /> Description
             </label>
             <textarea
@@ -307,7 +307,7 @@ export const TaskDetailModal = ({ task, onClose, members = [] }) => {
           {/* Task History Timeline */}
           {taskActivities.length > 0 && (
             <div className="pt-4 border-t border-slate-200 dark:border-slate-800">
-              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+              <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 items-center gap-1.5">
                 <Clock className="w-3.5 h-3.5 text-slate-400" /> Task Activity History
               </label>
               <div className="space-y-2.5">
