@@ -8,7 +8,9 @@ const runTests = async () => {
   console.log('   FLOWSPACE AUTOMATED INTEGRATION TESTS');
   console.log('========================================\n');
 
-  await connectDB();
+  const testUri = process.env.TEST_MONGODB_URI || 'mongodb://127.0.0.1:27017/flowspace_test';
+  await (await import('mongoose')).default.connect(testUri);
+  console.log(`[Database] Test Suite Connected: ${testUri}`);
   const seedInfo = await seedDatabase();
 
   console.log('1. Testing Seed Data Hierarchy...');
