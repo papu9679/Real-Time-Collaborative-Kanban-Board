@@ -42,9 +42,32 @@ export const Sidebar = ({
   const { board, loadBoard } = useBoard();
 
   const [boards, setBoards] = useState([]);
-  const [isDarkMode, setIsDarkMode] = useState(
-    () => document.documentElement.classList.contains('dark') || false
-  );
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    try {
+      const savedTheme = localStorage.getItem('flowspace_theme');
+      if (savedTheme === 'light') return false;
+      return true; // Default to dark mode
+    } catch {
+      return true;
+    }
+  });
+
+  // Ensure DOM matches theme state on mount
+  useEffect(() => {
+    try {
+      const savedTheme = localStorage.getItem('flowspace_theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+      } else {
+        document.documentElement.classList.add('dark');
+        if (!savedTheme) {
+          localStorage.setItem('flowspace_theme', 'dark');
+        }
+      }
+    } catch {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
 
   // Load boards when active tenant changes
   useEffect(() => {
@@ -70,13 +93,17 @@ export const Sidebar = ({
   }, [currentTenant?._id, loadBoard]);
 
   const toggleDarkMode = () => {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      setIsDarkMode(true);
-    }
+    setIsDarkMode((prev) => {
+      const nextMode = !prev;
+      if (nextMode) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('flowspace_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('flowspace_theme', 'light');
+      }
+      return nextMode;
+    });
   };
 
   return (

@@ -1,10 +1,28 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234f46e5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><rect width='18' height='18' x='3' y='3' rx='2'/><path d='M8 7v7'/><path d='M12 7v4'/><path d='M16 7v9'/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flowspace | Multi-Tenant Real-Time Kanban</title>
+    <script>
+      // Apply theme before DOM rendering to prevent light flash
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('flowspace_theme');
+          if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+            if (!savedTheme) {
+              localStorage.setItem('flowspace_theme', 'dark');
+            }
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
     <!-- Inter Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
